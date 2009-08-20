@@ -46,3 +46,13 @@ Within Django Admin
     - and, if your HTML object is not named "body" adjust the id passed to the
     `wysiwyg_editor` tag (note that Django admin will prefix your field names
     with `id_`).
+    
+Displaying end content
+~~~~~~~~~~~~~~~~~~~~~~
+
+    {% autoescape off %}
+        {{ content }}
+    {% endautoescape %}
+    
+This is a bit dangerous. It is advised that you filter the text in 
+some manner. #TODO - add in some advised ways to filter the text.
