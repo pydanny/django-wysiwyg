@@ -20,6 +20,10 @@ def wysiwyg_editor(field_id, editor_name=None):
     """
     Turn the textarea #field_id into a rich editor. If you do not specify the
     JavaScript name of the editor, it will be derived from the field_id.
+    
+    If you don't specify the editor_name then you'll have a JavaScript object
+    named "<field_id>_editor" in the global namespace. We give you control of
+    this in case you have a complex JS environment.
     """
 
     if not editor_name:

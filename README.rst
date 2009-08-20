@@ -34,7 +34,7 @@ Within your pages
 
     </textarea>
 
-    {% wysiwyg_editor "foo" "FooEditor" %}
+    {% wysiwyg_editor "my_text_area_id" %}
 
 Within Django Admin
 -------------------
