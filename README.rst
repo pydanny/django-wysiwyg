@@ -26,7 +26,7 @@ Usage
 Within your pages
 -----------------
 
-    {% load "wysiwyg" %}
+    {% load wysiwyg %}
 
     {% wysiwyg_setup %}
 
