@@ -1,0 +1,7 @@
+Django WYSIWYG
+=================
+
+Authors:
+
+ * Chris Adams
+ * Daniel Greenfeld
