@@ -16,7 +16,8 @@
     "use strict";
 
     // This is required for Yahoo's skins:
-    YAHOO.util.Dom.addClass(document.body, 'yui-skin-sam');
+    YAHOO.util.Event.onDOMReady(function() { YAHOO.util.Dom.addClass(document.body, 'yui-skin-sam'); });
+
 
     /*
         This config is used for our standard rich editor on the site and in the

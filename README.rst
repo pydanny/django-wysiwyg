@@ -25,11 +25,6 @@ Add `'django_wysiyg'` to your `INSTALLED_APPS` in `settings.py`::
 Usage
 ~~~~~~
 
-Edit your base.html
--------------------
-
- <body class="yui-skin-sam">
-
 Within your pages
 -----------------
 
