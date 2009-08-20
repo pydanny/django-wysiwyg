@@ -5,6 +5,8 @@ A Django application for easily converting HTML <textarea>s into rich HTML edito
 
 Currently as a template tag and possibly as a form widget.
 
+At the moment we are using YUI's editor. We are considering other options such as TinyMCE.
+
 Installation
 ~~~~~~~~~~~~~~~~
 
@@ -22,6 +24,11 @@ Add `'django_wysiyg'` to your `INSTALLED_APPS` in `settings.py`::
 
 Usage
 ~~~~~~
+
+Edit your base.html
+-------------------
+
+ <body class="yui-skin-sam">
 
 Within your pages
 -----------------
