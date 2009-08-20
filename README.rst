@@ -16,7 +16,7 @@ Configuration
 Add `'django_wysiyg'` to your `INSTALLED_APPS` in `settings.py`::
 
     INSTALLED_APPS = (
-        …
+        ...
         'django_wysiyg',
     )
 
