@@ -23,15 +23,6 @@ Add `'django_wysiyg'` to your `INSTALLED_APPS` in `settings.py`::
 Usage
 ~~~~~~
 
-Within Django Admin
--------------------
-
-    Copy `templates/admin/change_form.html` to your template root for the areas
-    you want to enable rich editing - e.g. `templates/admin/myapp/mymodel.html`
-    - and, if your HTML object is not named "body" adjust the id passed to the
-    `wysiwyg_editor` tag (note that Django admin will prefix your field names
-    with `id_`).
-
 Within your pages
 -----------------
 
@@ -45,3 +36,11 @@ Within your pages
 
     {% wysiwyg_editor "foo" "FooEditor" %}
 
+Within Django Admin
+-------------------
+
+    Copy `templates/admin/change_form.html` to your template root for the areas
+    you want to enable rich editing - e.g. `templates/admin/myapp/mymodel.html`
+    - and, if your HTML object is not named "body" adjust the id passed to the
+    `wysiwyg_editor` tag (note that Django admin will prefix your field names
+    with `id_`).

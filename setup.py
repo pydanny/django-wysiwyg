@@ -6,8 +6,8 @@ LONG_DESCRIPTION = """
 =====================================
 django_wysiwyg
 =====================================
-Django WYSIWYG is a django application that handles authentication.
-
+Django WYSIWYG is a django application that lets you easily change textareas
+into rich text editors.
 """
 
 setup(
