@@ -11,9 +11,9 @@ into rich text editors.
 """
 
 setup(
-    name='django_wysiwyg',
+    name='django-wysiwyg',
     version=version,
-    description="django_wysiwyg",
+    description="django-wysiwyg",
     long_description=LONG_DESCRIPTION,
     classifiers=[
         "Programming Language :: Python",
