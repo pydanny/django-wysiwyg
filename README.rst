@@ -28,6 +28,8 @@ Usage
 Within your pages
 -----------------
 
+::
+
     {% load wysiwyg %}
 
     {% wysiwyg_setup %}
@@ -41,11 +43,11 @@ Within your pages
 Within Django Admin
 -------------------
 
-    Copy `templates/admin/change_form.html` to your template root for the areas
-    you want to enable rich editing - e.g. `templates/admin/myapp/mymodel.html`
-    - and, if your HTML object is not named "body" adjust the id passed to the
-    `wysiwyg_editor` tag (note that Django admin will prefix your field names
-    with `id_`).
+Copy `templates/admin/change_form.html` to your template root for the areas
+you want to enable rich editing - e.g. `templates/admin/myapp/mymodel.html`
+- and, if your HTML object is not named "body" adjust the id passed to the
+`wysiwyg_editor` tag (note that Django admin will prefix your field names
+with `id_`).
 
 Handling Content
 ~~~~~~~~~~~~~~~~
@@ -58,18 +60,20 @@ django_wyswyg.clean_html will be exported if you have either html5lib
 install with pip or easy_install, although the later will require having the
 htmltidy C library installed.
 
-Using clean_html in views is simple:
+Using clean_html in views is simple::
 
     data = django_wyswyg.clean_html(data)
 
 To display raw HTML
 -------------------
 
+In your templates::
+
     {% autoescape off %}
         {{ content }}
     {% endautoescape %}
 
-or
+or::
 
     {{ content|safe }}
 
