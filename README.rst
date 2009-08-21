@@ -5,7 +5,7 @@ A Django application for easily converting HTML <textarea>s into rich HTML edito
 
 Currently this works as a template tag. We did it this way because control of how editing works is arguably a template issue (i.e. presentation) and not a forms/model issue (i.e. control).
 
-At the moment we are using YUI's editor because of familiarity and because it meant we . We considered other options such as TinyMCE, FCKeditor, various jquery tools and other tools.
+We considered other options such as TinyMCE, FCKeditor, various jquery tools and other tools but settled on YUI. We did so because of familiarity and because it meant we don't have to host files locally (you can change that if you want for your own local install and we do that for our own work projects).
 
 If you want to contribute to django-wysiwyg, please do so from the repository at http://github.com/pydanny/django-wysiwyg.
 
