@@ -1,17 +1,25 @@
 DJANGO WYSIWYG
 ==================
 
-A Django application for easily converting HTML <textarea>s into rich HTML editors.
+A Django application for easily converting HTML <textarea>s into rich HTML editors that meet US Government 508/WAC standards. This application has been demonstrated to work just fine with django-uni-form (http://github.com/pydanny/django-uni-form).
 
-Currently as a template tag and possibly as a form widget.
+Currently this works as a template tag. We did it this way because control of how editing works is arguably a template issue (i.e. presentation) and not a forms/model issue (i.e. control).
 
-At the moment we are using YUI's editor. We are considering other options such as TinyMCE.
+At the moment we are using YUI's editor because of familiarity and because it meant we . We considered other options such as TinyMCE, FCKeditor, various jquery tools and other tools.
+
+If you want to contribute to django-wysiwyg, please do so from the repository at http://github.com/pydanny/django-wysiwyg.
 
 Installation
 ~~~~~~~~~~~~~~~~
 
-    pip install (egg location)
+Via pip::
 
+  easy_install django-wysiwyg
+
+Via easy_setup::
+
+  pip install django-wysiwyg
+    
 Configuration
 ~~~~~~~~~~~~~~
 
