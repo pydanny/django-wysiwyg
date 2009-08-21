@@ -23,7 +23,7 @@ setup(
     ],
     keywords='pinax,django',
     author='Daniel Greenfeld, Chris Adams',
-    author_email='daniel.greenfeld-1@nasa.gov',
+    author_email='pydanny@gmail.com',
     url='',
     license='MIT',
     packages=find_packages(),
