@@ -3,7 +3,7 @@ def clean_html():
 
 def sanitize_html():
     raise ImportError("sanitize_html requires html5lib")
-    
+
 
 try:
     import html5lib

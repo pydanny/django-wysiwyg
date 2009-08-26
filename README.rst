@@ -19,7 +19,7 @@ Via pip::
 Via easy_setup::
 
   pip install django-wysiwyg
-    
+
 Configuration
 ~~~~~~~~~~~~~~
 
