@@ -30,6 +30,10 @@ Add `'django_wysiyg'` to your `INSTALLED_APPS` in `settings.py`::
         'django_wysiyg',
     )
 
+Add the `yui-skin-sam` class to your HTML body tag::
+
+    <body class="yui-skin-sam">
+
 Usage
 ~~~~~~
 
