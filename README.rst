@@ -23,11 +23,11 @@ Via easy_setup::
 Configuration
 ~~~~~~~~~~~~~~
 
-Add `'django_wysiyg'` to your `INSTALLED_APPS` in `settings.py`::
+Add `'django_wysiwyg'` to your `INSTALLED_APPS` in `settings.py`::
 
     INSTALLED_APPS = (
         ...
-        'django_wysiyg',
+        'django_wysiwyg',
     )
 
 Add the `yui-skin-sam` class to your HTML body tag::
