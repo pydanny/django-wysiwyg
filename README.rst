@@ -1,6 +1,8 @@
 DJANGO WYSIWYG
 ==================
 
+.. contents:: Table of Contents
+
 A Django application for easily converting HTML <textarea>s into rich HTML editors that meet US Government 508/WAC standards. This application has been demonstrated to work just fine with django-uni-form (http://github.com/pydanny/django-uni-form).
 
 Currently this works as a template tag. We did it this way because control of how editing works is arguably a template issue (i.e. presentation) and not a forms/model issue (i.e. control).
@@ -33,6 +35,8 @@ Add `'django_wysiwyg'` to your `INSTALLED_APPS` in `settings.py`::
 Add the `yui-skin-sam` class to your HTML body tag::
 
     <body class="yui-skin-sam">
+    
+----    
 
 Usage
 ~~~~~~
@@ -55,11 +59,37 @@ Within your pages
 Within Django Admin
 -------------------
 
-Copy `templates/admin/change_form.html` to your template root for the areas
-you want to enable rich editing - e.g. `templates/admin/myapp/mymodel.html`
-- and, if your HTML object is not named "body" adjust the id passed to the
-`wysiwyg_editor` tag (note that Django admin will prefix your field names
-with `id_`).
+django-wyswiyg comes with a custom file that serves as a base template for alterations to admin displays. To make an admin field display rich text, do the following:
+
+#. In your custom app's admin.py file, on the MyModelAdmin class, add ``change_form_template = 'my_app/change_form.html'``. For example::
+
+    from django.contrib import admin
+    from pydanny.models import Cartwheel
+
+    class CartWheelAdmin(admin.ModelAdmin):
+        change_form_template = 'pydanny/change_form.html'
+        
+    admin.site.register(Cartwheel, CartwheelAdmin)        
+
+#. copy ``django_wysiwyg/templates/admin/change_form.html`` to  ``my_app/templates/my_app/change_form.html``. For example::
+
+    cp django_wysiwyg/templates/admin/change_form.html pydanny/templates/pydanny/change_form.html
+  
+#. Now open the new ``my_app/templates/my_app/change_form.html`` file. You will need to set the fields you want made into rich text editors by adding {% wysiwyg_editor "id_description" %} template tag calls. For example::
+
+    {% extends "admin/change_form.html" %}
+
+    {% load wysiwyg %}
+
+    {% block extrahead %}
+        {{ block.super }}
+        {% wysiwyg_setup %}
+        {% wysiwyg_editor "id_description" %}    
+    {% endblock %}
+
+
+
+----
 
 Handling Content
 ~~~~~~~~~~~~~~~~
