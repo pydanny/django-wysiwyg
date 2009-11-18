@@ -3,13 +3,22 @@ DJANGO WYSIWYG
 
 .. contents:: Table of Contents
 
-A Django application for easily converting HTML <textarea>s into rich HTML editors that meet US Government 508/WAC standards. This application has been demonstrated to work just fine with django-uni-form (http://github.com/pydanny/django-uni-form).
+A Django application for easily converting HTML <textarea>s into rich HTML
+editors that meet US Government 508/WAC standards. This application has been
+demonstrated to work just fine with django-uni-form
+(http://github.com/pydanny/django-uni-form).
 
-Currently this works as a template tag. We did it this way because control of how editing works is arguably a template issue (i.e. presentation) and not a forms/model issue (i.e. control).
+Currently this works as a template tag. We did it this way because control of
+how editing works is arguably a template issue (i.e. presentation) and not a
+forms/model issue (i.e. control).
 
-We considered other options such as TinyMCE, FCKeditor, various jquery tools and other tools but settled on YUI. We did so because of familiarity and because it meant we don't have to host files locally (you can change that if you want for your own local install and we do that for our own work projects).
+YUI is the default editor due to familiarity, accessiblity and the fact that
+it's possible to run with entirely off of Yahoo's CDN, avoiding the need to
+maintain any local resources. CKEditor can be used but will require you to
+install the CKEditor files in MEDIA_URL/ckeditor (see below).
 
-If you want to contribute to django-wysiwyg, please do so from the repository at http://github.com/pydanny/django-wysiwyg.
+If you want to contribute to django-wysiwyg, please do so from the repository
+at http://github.com/pydanny/django-wysiwyg.
 
 Installation
 ~~~~~~~~~~~~~~~~
@@ -32,28 +41,36 @@ Add `'django_wysiwyg'` to your `INSTALLED_APPS` in `settings.py`::
         'django_wysiwyg',
     )
 
+If you wish to use CKEditor set the flavor in `settings.py`::
+
+    DJANGO_WYSIWYG_FLAVOR = "ckeditor"
+
+Please note that doing so requires you to either place the ckeditor
+distributables under `MEDIA_URL/ckeditor` or set `DJANGO_WYSIWYG_MEDIA_URL`
+in `settings.py` to the appropriate location containing the ckeditor
+distribution.
+
 Usage
 ~~~~~~
 
 Within your pages
 -----------------
 
-::
+Add the following to your templates::
 
     {% load wysiwyg %}
-
     {% wysiwyg_setup %}
 
-    <textarea id="foo">
+    <textarea id="foo"></textarea>
 
-    </textarea>
-
-    {% wysiwyg_editor "my_text_area_id" %}
+    {% wysiwyg_editor "foo" %}
 
 Within Django Admin
 -------------------
 
-django-wyswiyg comes with a custom file that serves as a base template for alterations to admin displays. To make an admin field display rich text, do the following:
+django-wyswiyg comes with a custom file that serves as a base template for
+alterations to admin displays. To make an admin field display rich text, do
+the following:
 
 #. In your custom app's admin.py file, on the MyModelAdmin class, add ``change_form_template = 'my_app/change_form.html'``. For example::
 
@@ -62,14 +79,16 @@ django-wyswiyg comes with a custom file that serves as a base template for alter
 
     class CartWheelAdmin(admin.ModelAdmin):
         change_form_template = 'pydanny/change_form.html'
-        
-    admin.site.register(Cartwheel, CartwheelAdmin)        
+
+    admin.site.register(Cartwheel, CartwheelAdmin)
 
 #. copy ``django_wysiwyg/templates/admin/change_form.html`` to  ``my_app/templates/my_app/change_form.html``. For example::
 
     cp django_wysiwyg/templates/admin/change_form.html pydanny/templates/pydanny/change_form.html
-  
-#. Now open the new ``my_app/templates/my_app/change_form.html`` file. You will need to set the fields you want made into rich text editors by adding {% wysiwyg_editor "id_description" %} template tag calls. For example::
+
+#. Now open the new ``my_app/templates/my_app/change_form.html`` file. You
+will need to set the fields you want made into rich text editors by adding {%
+wysiwyg_editor "id_description" %} template tag calls. For example::
 
     {% extends "admin/change_form.html" %}
 
@@ -78,7 +97,7 @@ django-wyswiyg comes with a custom file that serves as a base template for alter
     {% block extrahead %}
         {{ block.super }}
         {% wysiwyg_setup %}
-        {% wysiwyg_editor "id_description" %}    
+        {% wysiwyg_editor "id_description" %}
     {% endblock %}
 
 

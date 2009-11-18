@@ -2,7 +2,8 @@
     We're deliberately injecting our editor into the global namespace so it
     can be manipulated by user JavaScript.
 {% endcomment %}
-<script type="application/x-javascript">
+
+<script type="text/javascript">
     YAHOO.util.Event.onAvailable("{{ field_id }}", function() {
         window.{{ editor_name }} = new YAHOO.widget.SimpleEditor("{{ field_id }}", django_wysiwyg_editor_config);
         window.{{ editor_name }}.render();

@@ -1,0 +1,8 @@
+{% comment %}
+    We're deliberately injecting our editor into the global namespace so it
+    can be manipulated by user JavaScript.
+{% endcomment %}
+
+<script type="text/javascript">
+    CKEDITOR.replace( "{{ field_id }}" );
+</script>
