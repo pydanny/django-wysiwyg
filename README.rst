@@ -32,12 +32,6 @@ Add `'django_wysiwyg'` to your `INSTALLED_APPS` in `settings.py`::
         'django_wysiwyg',
     )
 
-Add the `yui-skin-sam` class to your HTML body tag::
-
-    <body class="yui-skin-sam">
-    
-----    
-
 Usage
 ~~~~~~
 
