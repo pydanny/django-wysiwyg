@@ -5,5 +5,9 @@
 {% block extrahead %}
     {{ block.super }}
     {% wysiwyg_setup %}
+{% endblock %}
+
+{% block content %}
+    {{ block.super }}
     {% wysiwyg_editor "id_body" %}
 {% endblock %}

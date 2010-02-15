@@ -56,7 +56,10 @@ Usage
 Within your pages
 -----------------
 
-Add the following to your templates::
+There are two template tags: ``wysiwyg_setup`` must be called once per page,
+preferably in the <head>, to load the JavaScript dependencies.
+``wysiwyg_editor`` should be called once per text area, after the text area has
+been created. A simple example::
 
     {% load wysiwyg %}
     {% wysiwyg_setup %}
@@ -68,11 +71,12 @@ Add the following to your templates::
 Within Django Admin
 -------------------
 
-django-wyswiyg comes with a custom file that serves as a base template for
+django-wysiwyg comes with a custom file that serves as a base template for
 alterations to admin displays. To make an admin field display rich text, do
 the following:
 
-#. In your custom app's admin.py file, on the MyModelAdmin class, add ``change_form_template = 'my_app/change_form.html'``. For example::
+#. In your custom app's admin.py file, on the MyModelAdmin class, add
+   ``change_form_template = 'my_app/change_form.html'``. For example::
 
     from django.contrib import admin
     from pydanny.models import Cartwheel
@@ -87,8 +91,10 @@ the following:
     cp django_wysiwyg/templates/admin/change_form.html pydanny/templates/pydanny/change_form.html
 
 #. Now open the new ``my_app/templates/my_app/change_form.html`` file. You
-will need to set the fields you want made into rich text editors by adding {%
-wysiwyg_editor "id_description" %} template tag calls. For example::
+   will need to set the fields you want made into rich text editors by adding
+   {% wysiwyg_editor "id_description" %} template tag calls, replacing
+   "id_description" with whatever your form's HTML field is named. For
+   example::
 
     {% extends "admin/change_form.html" %}
 
@@ -97,10 +103,12 @@ wysiwyg_editor "id_description" %} template tag calls. For example::
     {% block extrahead %}
         {{ block.super }}
         {% wysiwyg_setup %}
-        {% wysiwyg_editor "id_description" %}
     {% endblock %}
 
-
+    {% block content %}
+        {{ block.super }}
+        {% wysiwyg_editor "id_description" %}
+    {% endblock %}
 
 ----
 
@@ -110,14 +118,14 @@ Handling Content
 Cleaning HTML
 -------------
 
-django_wyswyg.clean_html will be exported if you have either html5lib
+django_wysiwyg.clean_html will be exported if you have either html5lib
 (http://code.google.com/p/html5lib/) or pytidylib installed. Both should
 install with pip or easy_install, although the later will require having the
 htmltidy C library installed.
 
 Using clean_html in views is simple::
 
-    data = django_wyswyg.clean_html(data)
+    data = django_wysiwyg.clean_html(data)
 
 To display raw HTML
 -------------------
