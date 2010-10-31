@@ -5,7 +5,8 @@
 
 <script type="text/javascript">
     YAHOO.util.Event.onAvailable("{{ field_id }}", function() {
-        window.{{ editor_name }} = new YAHOO.widget.Editor("{{ field_id }}", django_wysiwyg_editor_config);
+        var config = django_wysiwyg_editor_configs['{{ field_id }}'] || django_wysiwyg_editor_config;
+        window.{{ editor_name }} = new YAHOO.widget.Editor("{{ field_id }}", config);
         window.{{ editor_name }}.render();
     });
 </script>
