@@ -1,3 +1,4 @@
+{% load i18n %}
 {% comment %}
     This is hosted using the Yahoo CDN. You can override this if you prefer to host locally.
 
@@ -49,7 +50,7 @@
             buttons: [
             {
                 group: 'fontstyle',
-                label: 'Font Name and Size',
+                label: '{% trans "Font Name and Size" %}',
                 buttons: [
                 {
                     type: 'select',
@@ -101,21 +102,21 @@
             },
             {
                 group: 'textstyle',
-                label: 'Font Style',
+                label: '{% trans "Font Style" %}',
                 buttons: [
                 {
                     type: 'push',
-                    label: 'Bold CTRL + SHIFT + B',
+                    label: '{% trans "Bold CTRL + SHIFT + B" %}',
                     value: 'bold'
                 },
                 {
                     type: 'push',
-                    label: 'Italic CTRL + SHIFT + I',
+                    label: '{% trans "Italic CTRL + SHIFT + I" %}',
                     value: 'italic'
                 },
                 {
                     type: 'push',
-                    label: 'Underline CTRL + SHIFT + U',
+                    label: '{% trans "Underline CTRL + SHIFT + U" %}',
                     value: 'underline'
                 },
                 {
@@ -123,13 +124,13 @@
                 },
                 {
                     type: 'color',
-                    label: 'Font Color',
+                    label: '{% trans "Font Color" %}',
                     value: 'forecolor',
                     disabled: true
                 },
                 {
                     type: 'color',
-                    label: 'Background Color',
+                    label: '{% trans "Background Color" %}',
                     value: 'backcolor',
                     disabled: true
                 }
@@ -140,16 +141,16 @@
             },
             {
                 group: 'indentlist',
-                label: 'Lists',
+                label: '{% trans "Lists" %}',
                 buttons: [
                 {
                     type: 'push',
-                    label: 'Create an Unordered List',
+                    label: '{% trans "Create an Unordered List" %}',
                     value: 'insertunorderedlist'
                 },
                 {
                     type: 'push',
-                    label: 'Create an Ordered List',
+                    label: '{% trans "Create an Ordered List" %}',
                     value: 'insertorderedlist'
                 }
                 ]
@@ -159,17 +160,17 @@
             },
             {
                 group: 'insertitem',
-                label: 'Insert Item',
+                label: '{% trans "Insert Item" %}',
                 buttons: [
                 {
                     type: 'push',
-                    label: 'HTML Link CTRL + SHIFT + L',
+                    label: '{% trans "HTML Link CTRL + SHIFT + L" %}',
                     value: 'createlink',
                     disabled: true
                 },
                 {
                     type: 'push',
-                    label: 'Insert Image',
+                    label: '{% trans "Insert Image" %}',
                     value: 'insertimage'
                 }
                 ]
