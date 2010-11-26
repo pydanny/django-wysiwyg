@@ -5,3 +5,19 @@
 
 <script type="text/javascript" src="{{ DJANGO_WYSIWYG_MEDIA_URL }}ckeditor.js"></script>
 <script type="text/javascript" src="{{ DJANGO_WYSIWYG_MEDIA_URL }}sample.css"></script>
+<script type="text/javascript">
+    function django_wysiwyg_enable(editor_name, field_id, config)
+    {
+        window[editor_name] = CKEDITOR.replace(field_id, config);
+    }
+
+    function django_wysiwyg_disable(editor_name)
+    {
+        var editor = window[editor_name];
+        if(editor)
+        {
+            editor.destroy(/*noUpdate=*/false);
+            window[editor_name] = null;
+        }
+    }
+</script>

@@ -162,4 +162,24 @@
             ]
         }
     };
+
+    function django_wysiwyg_enable(editor_name, field_id, config)
+    {
+        if(!config) {
+            config = django_wysiwyg_editor_configs[field_id] || django_wysiwyg_editor_config;
+        }
+        window[editor_name] = new YAHOO.widget.Editor(field_id, config);
+        window[editor_name].render();
+    }
+
+    function django_wysiwyg_disable(editor_name)
+    {
+        var editor = window[editor_name];
+        if(editor)
+        {
+            editor.saveHTML();
+            editor.destroy();
+            window[editor_name] = null;
+        }
+    }
 </script>
