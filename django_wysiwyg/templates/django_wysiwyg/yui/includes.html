@@ -53,32 +53,22 @@
                 group: 'fontstyle',
                 label: '{% trans "Font Name and Size" %}',
                 buttons: [
-                {
-                    type: 'select',
-                    label: 'Arial',
-                    value: 'fontname',
-                    disabled: true,
-                    menu: [
-                      { text: 'Arial', checked: true },
-                      { text: 'Arial Black' },
-                      { text: 'Comic Sans MS' },
-                      { text: 'Courier New' },
-                      { text: 'Georgia' },
-                      { text: 'Impact' },
-                      { text: 'Lucida Console' },
-                      { text: 'Tahoma' },
-                      { text: 'Times New Roman' },
-                      { text: 'Trebuchet MS' },
-                      { text: 'Verdana' }
-                    ]
-                },
-                {
-                    type: 'spin',
-                    label: '13',
-                    value: 'fontsize',
-                    range: [9, 75],
-                    disabled: true
-                }
+                    { type: 'select', label: 'Arial', value: 'fontname', disabled: true,
+                      menu: [
+                        { text: 'Arial', checked: true },
+                        { text: 'Arial Black' },
+                        { text: 'Comic Sans MS' },
+                        { text: 'Courier New' },
+                        { text: 'Georgia' },
+                        { text: 'Impact' },
+                        { text: 'Lucida Console' },
+                        { text: 'Tahoma' },
+                        { text: 'Times New Roman' },
+                        { text: 'Trebuchet MS' },
+                        { text: 'Verdana' }
+                      ]
+                    },
+                    { type: 'spin', label: '13', value: 'fontsize', range: [9, 75], disabled: true }
                 ]
             },
             {
@@ -88,36 +78,12 @@
                 group: 'textstyle',
                 label: '{% trans "Font Style" %}',
                 buttons: [
-                {
-                    type: 'push',
-                    label: '{% trans "Bold CTRL + SHIFT + B" %}',
-                    value: 'bold'
-                },
-                {
-                    type: 'push',
-                    label: '{% trans "Italic CTRL + SHIFT + I" %}',
-                    value: 'italic'
-                },
-                {
-                    type: 'push',
-                    label: '{% trans "Underline CTRL + SHIFT + U" %}',
-                    value: 'underline'
-                },
-                {
-                    type: 'separator'
-                },
-                {
-                    type: 'color',
-                    label: '{% trans "Font Color" %}',
-                    value: 'forecolor',
-                    disabled: true
-                },
-                {
-                    type: 'color',
-                    label: '{% trans "Background Color" %}',
-                    value: 'backcolor',
-                    disabled: true
-                }
+                    { type: 'push', label: '{% trans "Bold CTRL + SHIFT + B" %}', value: 'bold' },
+                    { type: 'push', label: '{% trans "Italic CTRL + SHIFT + I" %}', value: 'italic' },
+                    { type: 'push', label: '{% trans "Underline CTRL + SHIFT + U" %}', value: 'underline' },
+                    { type: 'separator' },
+                    { type: 'color', label: '{% trans "Font Color" %}', value: 'forecolor', disabled: true },
+                    { type: 'color', label: '{% trans "Background Color" %}', value: 'backcolor', disabled: true }
                 ]
             },
             {
@@ -127,16 +93,8 @@
                 group: 'indentlist',
                 label: '{% trans "Lists" %}',
                 buttons: [
-                {
-                    type: 'push',
-                    label: '{% trans "Create an Unordered List" %}',
-                    value: 'insertunorderedlist'
-                },
-                {
-                    type: 'push',
-                    label: '{% trans "Create an Ordered List" %}',
-                    value: 'insertorderedlist'
-                }
+                    { type: 'push', label: '{% trans "Create an Unordered List" %}', value: 'insertunorderedlist' },
+                    { type: 'push', label: '{% trans "Create an Ordered List" %}', value: 'insertorderedlist' }
                 ]
             },
             {
@@ -146,17 +104,8 @@
                 group: 'insertitem',
                 label: '{% trans "Insert Item" %}',
                 buttons: [
-                {
-                    type: 'push',
-                    label: '{% trans "HTML Link CTRL + SHIFT + L" %}',
-                    value: 'createlink',
-                    disabled: true
-                },
-                {
-                    type: 'push',
-                    label: '{% trans "Insert Image" %}',
-                    value: 'insertimage'
-                }
+                    { type: 'push', label: '{% trans "HTML Link CTRL + SHIFT + L" %}', value: 'createlink', disabled: true },
+                    { type: 'push', label: '{% trans "Insert Image" %}', value: 'insertimage' }
                 ]
             }
             ]
