@@ -1,40 +1,5 @@
-{% load i18n %}
-{% comment %}
-    This is hosted using the Yahoo CDN. You can override this if you prefer to host locally.
-
-    To include other parts of YUI, visit the configurator here:
-
-    http://developer.yahoo.com/yui/articles/hosting/?editor&MIN
-{% endcomment %}
-
-
-{% comment %}
-    TODO: YUI values should be superseded by DJANGO_WYSWYG_MEDIA_URL - should we just hardcode the name combo.js / combo.css or do something more configurable?
-{% endcomment %}
-
-<!-- Combo-handled YUI CSS files: -->
-<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.8.2r1/build/assets/skins/sam/skin.css">
-<!-- Combo-handled YUI JS files: -->
-<script type="text/javascript" src="http://yui.yahooapis.com/combo?2.8.2r1/build/yahoo-dom-event/yahoo-dom-event.js&2.8.2r1/build/container/container_core-min.js&2.8.2r1/build/menu/menu-min.js&2.8.2r1/build/element/element-min.js&2.8.2r1/build/button/button-min.js&2.8.2r1/build/editor/editor-min.js"></script>
-
-<script type="text/javascript" charset="utf-8">
-    "use strict";
-
-    // This is required for Yahoo's skins:
-    YAHOO.util.Event.onDOMReady(function() { YAHOO.util.Dom.addClass(document.body, 'yui-skin-sam'); });
-
-
-    /*
-        This config is used for our standard rich editor on the site and in the
-        Django admin area if you've modified the change_form.html to enable
-        rich editing.
-
-        See Yahoo's documentation for customization options:
-
-        http://developer.yahoo.com/yui/editor/
-    */
-
-    var django_wysiwyg_editor_configs = [];   // allow custom settings per editor ID{% block django_wysiwyg_editor_config %}
+{% extends "django_wysiwyg/yui/includes.html" %}{% load i18n %}
+{% block django_wysiwyg_editor_config %}
     var django_wysiwyg_editor_config = {
         height: "400px",
         width: "624px",
@@ -48,6 +13,7 @@
             //collapse: true,
             //titlebar: 'Body',
             draggable: false,
+            buttonType: 'advanced',
             buttons: [
             {
                 group: 'fontstyle',
@@ -82,8 +48,39 @@
                     { type: 'push', label: '{% trans "Italic CTRL + SHIFT + I" %}', value: 'italic' },
                     { type: 'push', label: '{% trans "Underline CTRL + SHIFT + U" %}', value: 'underline' },
                     { type: 'separator' },
+                    { type: 'push', label: '{% trans "Subscript" %}', value: 'subscript', disabled: true },
+                    { type: 'push', label: '{% trans "Superscript" %}', value: 'superscript', disabled: true },
+                    { type: 'separator' },
                     { type: 'color', label: '{% trans "Font Color" %}', value: 'forecolor', disabled: true },
-                    { type: 'color', label: '{% trans "Background Color" %}', value: 'backcolor', disabled: true }
+                    { type: 'color', label: '{% trans "Background Color" %}', value: 'backcolor', disabled: true },
+                    { type: 'separator' },
+                    { type: 'push', label: '{% trans "Remove Formatting" %}', value: 'removeformat', disabled: true },
+                    { type: 'push', label: '{% trans "Show/Hide Hidden Elements" %}', value: 'hiddenelements' }
+                ]
+            },
+            { type: 'separator' },
+            { group: 'alignment', label: 'Alignment',
+                buttons: [
+                    { type: 'push', label: '{% trans "Align Left CTRL + SHIFT + [" %}', value: 'justifyleft' },
+                    { type: 'push', label: '{% trans "Align Center CTRL + SHIFT + |" %}', value: 'justifycenter' },
+                    { type: 'push', label: '{% trans "Align Right CTRL + SHIFT + ]" %}', value: 'justifyright' },
+                    { type: 'push', label: '{% trans "Justify" %}', value: 'justifyfull' }
+                ]
+            },
+            { type: 'separator' },
+            { group: 'parastyle', label: '{% trans "Paragraph Style" %}',
+                buttons: [
+                { type: 'select', label: '{% trans "Normal" %}', value: 'heading', disabled: true,
+                    menu: [
+                        { text: '{% trans "Normal" %}', value: 'none', checked: true },
+                        { text: '{% trans "Header 1" %}', value: 'h1' },
+                        { text: '{% trans "Header 2" %}', value: 'h2' },
+                        { text: '{% trans "Header 3" %}', value: 'h3' },
+                        { text: '{% trans "Header 4" %}', value: 'h4' },
+                        { text: '{% trans "Header 5" %}', value: 'h5' },
+                        { text: '{% trans "Header 6" %}', value: 'h6' }
+                    ]
+                }
                 ]
             },
             {
@@ -93,6 +90,8 @@
                 group: 'indentlist',
                 label: '{% trans "Lists" %}',
                 buttons: [
+                    { type: 'push', label: '{% trans "Indent" %}', value: 'indent', disabled: true },
+                    { type: 'push', label: '{% trans "Outdent" %}', value: 'outdent', disabled: true },
                     { type: 'push', label: '{% trans "Create an Unordered List" %}', value: 'insertunorderedlist' },
                     { type: 'push', label: '{% trans "Create an Ordered List" %}', value: 'insertorderedlist' }
                 ]
@@ -112,23 +111,3 @@
         }
     };
 {% endblock %}
-    function django_wysiwyg_enable(editor_name, field_id, config)
-    {
-        if(!config) {
-            config = django_wysiwyg_editor_configs[field_id] || django_wysiwyg_editor_config;
-        }
-        window[editor_name] = new YAHOO.widget.Editor(field_id, config);
-        window[editor_name].render();
-    }
-
-    function django_wysiwyg_disable(editor_name)
-    {
-        var editor = window[editor_name];
-        if(editor)
-        {
-            editor.saveHTML();
-            editor.destroy();
-            window[editor_name] = null;
-        }
-    }
-</script>
