@@ -21,7 +21,9 @@
     "use strict";
 
     // This is required for Yahoo's skins:
-    YAHOO.util.Event.onDOMReady(function() { YAHOO.util.Dom.addClass(document.body, 'yui-skin-sam'); });
+    if( window.YAHOO ) {
+        YAHOO.util.Event.onDOMReady(function() { YAHOO.util.Dom.addClass(document.body, 'yui-skin-sam'); });
+    }
 
 
     /*
@@ -130,5 +132,12 @@
             editor.destroy();
             window[editor_name] = null;
         }
+    }
+
+    function django_wysiwyg_is_loaded()
+    {
+      return window.YAHOO != null
+          && window.YAHOO.widget != null
+          && window.YAHOO.widget.Editor != null;
     }
 </script>
