@@ -5,3 +5,4 @@ Authors:
 
  * Chris Adams
  * Daniel Greenfeld
+ * Diederik van der Boor
