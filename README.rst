@@ -27,10 +27,6 @@ Via pip::
 
   easy_install django-wysiwyg
 
-Via easy_setup::
-
-  pip install django-wysiwyg
-
 Configuration
 ~~~~~~~~~~~~~~
 
