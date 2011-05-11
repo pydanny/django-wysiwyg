@@ -8,14 +8,15 @@
 <script type="text/javascript">
     function django_wysiwyg_enable(editor_name, field_id, config)
     {
-        window[editor_name] = CKEDITOR.replace(field_id, config);
+        if( !window[editor_name] ) {
+            window[editor_name] = CKEDITOR.replace(field_id, config);
+        }
     }
 
     function django_wysiwyg_disable(editor_name)
     {
         var editor = window[editor_name];
-        if(editor)
-        {
+        if( editor ) {
             editor.destroy(/*noUpdate=*/false);
             window[editor_name] = null;
         }
