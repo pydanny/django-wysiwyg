@@ -114,31 +114,37 @@
         }
     };
 {% endblock %}
-    function django_wysiwyg_enable(editor_name, field_id, config)
-    {
-        if( !config ) {
-            config = django_wysiwyg_editor_configs[field_id] || django_wysiwyg_editor_config;
-        }
-        if( !window[editor_name] ) {
-          window[editor_name] = new YAHOO.widget.Editor(field_id, config);
-          window[editor_name].render();
-        }
-    }
 
-    function django_wysiwyg_disable(editor_name)
+    var django_wysiwyg =
     {
-        var editor = window[editor_name];
-        if( editor ) {
-            editor.saveHTML();
-            editor.destroy();
-            window[editor_name] = null;
-        }
-    }
+        editors: {},
 
-    function django_wysiwyg_is_loaded()
-    {
-      return window.YAHOO != null
-          && window.YAHOO.widget != null
-          && window.YAHOO.widget.Editor != null;
+        enable: function django_wysiwyg_enable(editor_name, field_id, config)
+        {
+            if( !config ) {
+                config = django_wysiwyg_editor_configs[field_id] || django_wysiwyg_editor_config;
+            }
+            if( !this.editors[editor_name] ) {
+              this.editors[editor_name] = new YAHOO.widget.Editor(field_id, config);
+              this.editors[editor_name].render();
+            }
+        },
+
+        disable: function django_wysiwyg_disable(editor_name)
+        {
+            var editor = this.editors[editor_name];
+            if( editor ) {
+                editor.saveHTML();
+                editor.destroy();
+                this.editors[editor_name] = null;
+            }
+        },
+
+        is_loaded: function django_wysiwyg_is_loaded()
+        {
+          return window.YAHOO != null
+              && window.YAHOO.widget != null
+              && window.YAHOO.widget.Editor != null;
+        }
     }
 </script>

@@ -4,5 +4,5 @@
 {% endcomment %}
 
 <script type="text/javascript">
-    CKEDITOR.replace( "{{ field_id }}" );
+    django_wysiwyg.enable('{{ editor_name }}', '{{ field_id }}');
 </script>
