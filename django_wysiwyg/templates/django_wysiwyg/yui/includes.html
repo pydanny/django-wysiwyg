@@ -13,9 +13,9 @@
 {% endcomment %}
 
 <!-- Combo-handled YUI CSS files: -->
-<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.8.2r1/build/assets/skins/sam/skin.css">
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.9.0/build/assets/skins/sam/skin.css">
 <!-- Combo-handled YUI JS files: -->
-<script type="text/javascript" src="http://yui.yahooapis.com/combo?2.8.2r1/build/yahoo-dom-event/yahoo-dom-event.js&2.8.2r1/build/container/container_core-min.js&2.8.2r1/build/menu/menu-min.js&2.8.2r1/build/element/element-min.js&2.8.2r1/build/button/button-min.js&2.8.2r1/build/editor/editor-min.js"></script>
+<script type="text/javascript" src="http://yui.yahooapis.com/combo?2.9.0/build/yahoo-dom-event/yahoo-dom-event.js&2.9.0/build/container/container_core-min.js&2.9.0/build/menu/menu-min.js&2.9.0/build/element/element-min.js&2.9.0/build/button/button-min.js&2.9.0/build/editor/editor-min.js"></script>
 
 <script type="text/javascript" charset="utf-8">
     "use strict";
@@ -114,30 +114,37 @@
         }
     };
 {% endblock %}
-    function django_wysiwyg_enable(editor_name, field_id, config)
-    {
-        if(!config) {
-            config = django_wysiwyg_editor_configs[field_id] || django_wysiwyg_editor_config;
-        }
-        window[editor_name] = new YAHOO.widget.Editor(field_id, config);
-        window[editor_name].render();
-    }
 
-    function django_wysiwyg_disable(editor_name)
+    var django_wysiwyg =
     {
-        var editor = window[editor_name];
-        if(editor)
+        editors: {},
+
+        enable: function django_wysiwyg_enable(editor_name, field_id, config)
         {
-            editor.saveHTML();
-            editor.destroy();
-            window[editor_name] = null;
-        }
-    }
+            if( !config ) {
+                config = django_wysiwyg_editor_configs[field_id] || django_wysiwyg_editor_config;
+            }
+            if( !this.editors[editor_name] ) {
+              this.editors[editor_name] = new YAHOO.widget.Editor(field_id, config);
+              this.editors[editor_name].render();
+            }
+        },
 
-    function django_wysiwyg_is_loaded()
-    {
-      return window.YAHOO != null
-          && window.YAHOO.widget != null
-          && window.YAHOO.widget.Editor != null;
+        disable: function django_wysiwyg_disable(editor_name)
+        {
+            var editor = this.editors[editor_name];
+            if( editor ) {
+                editor.saveHTML();
+                editor.destroy();
+                this.editors[editor_name] = null;
+            }
+        },
+
+        is_loaded: function django_wysiwyg_is_loaded()
+        {
+          return window.YAHOO != null
+              && window.YAHOO.widget != null
+              && window.YAHOO.widget.Editor != null;
+        }
     }
 </script>
