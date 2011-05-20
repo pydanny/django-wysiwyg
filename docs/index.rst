@@ -13,6 +13,9 @@ Contents:
    
    install
    examples
+   extending
+   javascript_api
+   utils
 
 Indices and tables
 ==================
