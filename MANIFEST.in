@@ -2,5 +2,4 @@ include CONTRIBUTORS.txt
 include LICENSE.txt
 include MANIFEST.in
 include README.rst
-recursive-include docs *
 recursive-include django_wysiwyg/templates *

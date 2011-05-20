@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-version = '0.2.1'
+version = '0.3.0'
 
 LONG_DESCRIPTION = """
 DJANGO WYSIWYG
@@ -25,12 +25,14 @@ install the CKEditor files in MEDIA_URL/ckeditor (see below).
 If you want to contribute to django-wysiwyg, please do so from the repository
 at http://github.com/pydanny/django-wysiwyg.
 
+**Note**: This may be obvious, but this only works on Textareasa (models.TextField) and not simple character fields.
+
 Installation
 ~~~~~~~~~~~~~~~~
 
 Via pip::
 
-  easy_install django-wysiwyg
+  pip install django-wysiwyg
 
 Configuration
 ~~~~~~~~~~~~~~
@@ -147,6 +149,7 @@ from untrusted users*
 `clean_html` does not protect against security problems; `sanitize_html`
 attempts to do so but is only available with html5lib (tidylib has no
 equivalent mode) and should currently be considered experimental.
+
 """
 
 setup(
@@ -160,7 +163,7 @@ setup(
         "Framework :: Django",
         "Environment :: Web Environment",
     ],
-    keywords='pinax,django',
+    keywords='django',
     author='Daniel Greenfeld, Chris Adams',
     author_email='pydanny@gmail.com',
     url='https://github.com/pydanny/django-wysiwyg',
