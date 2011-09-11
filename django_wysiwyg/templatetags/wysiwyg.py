@@ -11,7 +11,7 @@ register = template.Library()
 def get_settings():
     """Utility function to retrieve settings.py values with defaults"""
     return {
-        "DJANGO_WYSIWYG_MEDIA_URL": getattr(settings, "DJANGO_WYSIWYG_MEDIA_URL", urljoin(settings.MEDIA_URL, "ckeditor/")),
+        "DJANGO_WYSIWYG_MEDIA_URL": getattr(settings, "DJANGO_WYSIWYG_MEDIA_URL", urljoin(settings.STATIC_URL, "ckeditor/")),
         "DJANGO_WYSIWYG_FLAVOR":    getattr(settings, "DJANGO_WYSIWYG_FLAVOR", "yui"),
         }
 
