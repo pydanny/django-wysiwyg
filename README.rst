@@ -20,7 +20,7 @@ install the CKEditor files in MEDIA_URL/ckeditor (see below).
 If you want to contribute to django-wysiwyg, please do so from the repository
 at http://github.com/pydanny/django-wysiwyg.
 
-**Note**: This may be obvious, but this only works on Textareasa (models.TextField) and not simple character fields.
+**Note**: This may be obvious, but this only works on ``<textarea>``s (models.TextField) and not simple character (``<input>``) fields.
 
 Installation
 ~~~~~~~~~~~~~~~~
