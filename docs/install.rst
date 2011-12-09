@@ -14,7 +14,7 @@ Other settings::
 
     DJANGO_WYSIWYG_FLAVOR = 'yui'       # Default
     # DJANGO_WYSIWYG_FLAVOR = 'ckeditor'  # Requires you to also place the ckeditor files here:
-    # DJANGO_WYSIWYG_MEDIA_URL = "%s/ckeditor" % MEDIA_URL
+    # DJANGO_WYSIWYG_MEDIA_URL = "%s/ckeditor" % STATIC_URL
 
 The following editors are supported out of the box:
 

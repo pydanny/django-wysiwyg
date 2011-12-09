@@ -20,7 +20,7 @@ forms/model issue (i.e. control).
 YUI is the default editor due to familiarity, accessiblity and the fact that
 it's possible to run with entirely off of Yahoo's CDN, avoiding the need to
 maintain any local resources. CKEditor can be used but will require you to
-install the CKEditor files in MEDIA_URL/ckeditor (see below).
+install the CKEditor files in STATIC_URL/ckeditor (see below).
 
 If you want to contribute to django-wysiwyg, please do so from the repository
 at http://github.com/pydanny/django-wysiwyg.
@@ -49,7 +49,7 @@ If you wish to use CKEditor set the flavor in `settings.py`::
     DJANGO_WYSIWYG_FLAVOR = "ckeditor"
 
 Please note that doing so requires you to either place the ckeditor
-distributables under `MEDIA_URL/ckeditor` or set `DJANGO_WYSIWYG_MEDIA_URL`
+distributables under `STATIC_URL/ckeditor` or set `DJANGO_WYSIWYG_MEDIA_URL`
 in `settings.py` to the appropriate location containing the ckeditor
 distribution.
 
