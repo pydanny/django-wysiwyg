@@ -78,4 +78,6 @@ INSTALLED_APPS = (
 
 DJANGO_WYSIWYG_FLAVOR = 'yui'       # Default
 # DJANGO_WYSIWYG_FLAVOR = 'ckeditor'  # Requires you to also place the ckeditor files here:
+# NOTE: If you are using DJANGO 1.3, you will want to follow the docs and use
+# STATIC_URL instead of MEDIA_URL here.
 # DJANGO_WYSIWYG_MEDIA_URL = "%s/ckeditor" % MEDIA_URL
