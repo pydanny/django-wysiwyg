@@ -63,7 +63,9 @@ TEMPLATE_LOADERS = (
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "django.middleware.csrf.CsrfViewMiddleware",
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+
 )
 
 ROOT_URLCONF = 'test_project.urls'
@@ -73,6 +75,13 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.sites",
+    "django.contrib.messages",
+    "fun",
     'django_wysiwyg'
 )
 

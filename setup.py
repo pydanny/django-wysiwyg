@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-version = '0.4.0'
+version = '0.4.1'
 
 LONG_DESCRIPTION = """
 DJANGO WYSIWYG
@@ -25,7 +25,7 @@ install the CKEditor files in STATIC_URL/ckeditor (see below).
 If you want to contribute to django-wysiwyg, please do so from the repository
 at http://github.com/pydanny/django-wysiwyg.
 
-**Note**: This may be obvious, but this only works on Textareasa (models.TextField) and not simple character fields.
+**Note**: This may be obvious, but this only works on ``<textarea>`` (models.TextField) and not simple character ( ``<input>`` ) fields.
 
 Installation
 ~~~~~~~~~~~~~~~~
@@ -79,21 +79,21 @@ alterations to admin displays. To make an admin field display rich text, do
 the following:
 
 #. In your custom app's admin.py file, on the MyModelAdmin class, add
-   ``change_form_template = 'my_app/change_form.html'``. For example::
+   ``change_form_template = 'my-app-name/admin/change_form.html'``. For example::
 
     from django.contrib import admin
-    from pydanny.models import Cartwheel
+    from fun.models import Playground
 
-    class CartWheelAdmin(admin.ModelAdmin):
-        change_form_template = 'pydanny/change_form.html'
+    class PlaygroundAdmin(admin.ModelAdmin):
+        change_form_template = 'fun/admin/change_form.html'
 
-    admin.site.register(Cartwheel, CartwheelAdmin)
+    admin.site.register(admin, PlaygroundAdmin)
 
-#. copy ``django_wysiwyg/templates/admin/change_form.html`` to  ``my_app/templates/my_app/change_form.html``. For example::
+#. copy ``django_wysiwyg/templates/my-app-name/admin/change_form.html`` to  ``my_app/templates/<my-app-name>/adminchange_form.html``. For example::
 
-    cp django_wysiwyg/templates/admin/change_form.html pydanny/templates/pydanny/change_form.html
+    cp django_wysiwyg/templates/admin/my-app-name/change_form.html pydanny/templates/fun/admin/change_form.html
 
-#. Now open the new ``my_app/templates/my_app/change_form.html`` file. You
+#. Now open the new ``pydanny/templates/my-app-name/admin/change_form.html`` file. You
    will need to set the fields you want made into rich text editors by adding
    {% wysiwyg_editor "id_description" %} template tag calls, replacing
    "id_description" with whatever your form's HTML field is named. For
@@ -149,6 +149,7 @@ from untrusted users*
 `clean_html` does not protect against security problems; `sanitize_html`
 attempts to do so but is only available with html5lib (tidylib has no
 equivalent mode) and should currently be considered experimental.
+
 
 """
 
