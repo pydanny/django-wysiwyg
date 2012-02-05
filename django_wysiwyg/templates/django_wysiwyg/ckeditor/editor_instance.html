@@ -4,5 +4,7 @@
 {% endcomment %}
 
 <script type="text/javascript">
-    django_wysiwyg.enable('{{ editor_name }}', '{{ field_id }}');
+	var config = {{ config }};
+
+    django_wysiwyg.enable('{{ editor_name }}', '{{ field_id }}', config);
 </script>
