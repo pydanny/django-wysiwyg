@@ -81,7 +81,7 @@ INSTALLED_APPS = (
     "django.contrib.sessions",
     "django.contrib.sites",
     "django.contrib.messages",
-    "fun",
+    "test_project.fun",
     'django_wysiwyg'
 )
 
