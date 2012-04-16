@@ -82,7 +82,7 @@ the following:
     class PlaygroundAdmin(admin.ModelAdmin):
         change_form_template = 'fun/admin/change_form.html'
 
-    admin.site.register(admin, PlaygroundAdmin)
+    admin.site.register(Playground, PlaygroundAdmin)
 
 #. copy ``django_wysiwyg/templates/my-app-name/admin/change_form.html`` to  ``my_app/templates/<my-app-name>/adminchange_form.html``. For example::
 
