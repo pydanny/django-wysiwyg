@@ -29,6 +29,7 @@ def clean_html5lib(input):
 
 def sanitize_html5lib(input):
     """
+    Removes any unwanted HTML tags and attributes, using html5lib.
 
     >>> sanitize_html5lib("foobar<p>adf<i></p>abc</i>")
     u'foobar<p>adf<i></i></p><i>abc</i>'
@@ -46,7 +47,7 @@ def sanitize_html5lib(input):
     return "".join(s.serialize(stream))
 
 def clean_pytidylib(input):
-    (cleaned_html, warnings) = tidylib.tidy_document(html)
+    (cleaned_html, warnings) = tidylib.tidy_document(input)
     return cleaned_html
 
 try:
@@ -55,7 +56,7 @@ try:
 except ImportError:
     try:
         import tidylib
-        clean_html = clean_tidylib
+        clean_html = clean_pytidylib
     except ImportError:
         pass
 
