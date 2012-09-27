@@ -53,15 +53,30 @@ You can either:
 * install django-ckeditor_ and include it in the ``INSTALLED_APPS``
 * set `DJANGO_WYSIWYG_MEDIA_URL` in `settings.py` to the appropriate location containing the ckeditor distribution.
 
+Using TinyMCE
+-------------
+
+To use TinyMCE, use the following settings::
+
+    DJANGO_WYSIWYG_FLAVOR = "tinymce"    # or "tinymce_advanced"
+
+The TinyMCE distributables need to be available. You can either:
+
+* place them in `STATIC_URL/tinymce`
+* install django-tinymce_ and include it in the ``INSTALLED_APPS``
+* set `DJANGO_WYSIWYG_MEDIA_URL` to the appropriate location.
+
 Other editors
 -------------
 
 The following values are allowed for the ``DJANGO_WYSIWYG_FLAVOR`` setting:
 
-* ``yui`` - a basic YUI editor (the default)
-* ``yui_advanced`` - the YUI editor with many more toolbar buttons
 * ``ckeditor`` - CKEditor from http://ckeditor.com/
 * ``redactor`` - Redactor editor from http://redactorjs.com/ (requires a license)
+* ``tinymce`` - the TinyMCE editor from http://www.tinymce.com/, in simple mode.
+* ``tinymce_advanced`` - the TinyMCE editor with many more toolbar buttons
+* ``yui`` - a basic YUI editor (the default)
+* ``yui_advanced`` - the YUI editor with many more toolbar buttons
 
 Other editors can be supported by provinding the required templates;
 see http://django-wysiwyg.readthedocs.org/en/latest/extending.html
@@ -164,3 +179,4 @@ attempts to do so but is only available with html5lib (tidylib has no
 equivalent mode) and should currently be considered experimental.
 
 .. _django-ckeditor: https://github.com/shaunsephton/django-ckeditor
+.. _django-tinymce: https://github.com/aljosa/django-tinymce
