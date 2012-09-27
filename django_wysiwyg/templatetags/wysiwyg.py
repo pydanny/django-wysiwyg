@@ -2,9 +2,7 @@ from urlparse import urljoin
 
 from django import template
 from django.conf import settings
-from django.template import Context, Template
-from django.template.defaultfilters import stringfilter
-from django.template.loader import get_template, render_to_string
+from django.template.loader import render_to_string
 
 register = template.Library()
 
