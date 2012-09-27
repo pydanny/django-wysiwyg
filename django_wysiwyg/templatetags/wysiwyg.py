@@ -8,10 +8,12 @@ register = template.Library()
 
 def get_settings():
     """Utility function to retrieve settings.py values with defaults"""
+    flavor = getattr(settings, "DJANGO_WYSIWYG_FLAVOR", "yui")
+
     return {
-        "DJANGO_WYSIWYG_MEDIA_URL": getattr(settings, "DJANGO_WYSIWYG_MEDIA_URL", urljoin(settings.STATIC_URL, "ckeditor/")),
-        "DJANGO_WYSIWYG_FLAVOR":    getattr(settings, "DJANGO_WYSIWYG_FLAVOR", "yui"),
-        }
+        "DJANGO_WYSIWYG_MEDIA_URL": getattr(settings, "DJANGO_WYSIWYG_MEDIA_URL", urljoin(settings.STATIC_URL, flavor) + '/'),
+        "DJANGO_WYSIWYG_FLAVOR":    flavor,
+    }
 
 
 @register.simple_tag
