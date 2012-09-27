@@ -61,6 +61,7 @@ The following values are allowed for the ``DJANGO_WYSIWYG_FLAVOR`` setting:
 * ``yui`` - a basic YUI editor (the default)
 * ``yui_advanced`` - the YUI editor with many more toolbar buttons
 * ``ckeditor`` - CKEditor from http://ckeditor.com/
+* ``redactor`` - Redactor editor from http://redactorjs.com/ (requires a license)
 
 Other editors can be supported by provinding the required templates;
 see http://django-wysiwyg.readthedocs.org/en/latest/extending.html
