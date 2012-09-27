@@ -17,12 +17,17 @@ includes.html
 The includes file will be added to the top of the page, to provide all required scripts.
 It is loaded by the ``{% wysiwyg_setup %}`` code. The template could contain something like::
 
-    <script type="text/javascript" src="{{ DJANGO_WYSIWYG_MEDIA_URL }}ckeditor.js"></script>
+    <script type="text/javascript" src="{{ DJANGO_WYSIWYG_MEDIA_URL }}editor.js"></script>
     <script type="text/javascript" src="{{ DJANGO_WYSIWYG_MEDIA_URL }}sample.css"></script>
 
 Secondly, the file has to provide a few JavaScript functions, to implement the :doc:`javascript_api`
 This is used for Ajax environments, or interfaces which use a lot of DOM manipulation.
 The required API functions have the following structure::
+
+    var django_wysiwyg_editor_configs = [];   // allow custom settings per editor ID{% block django_wysiwyg_editor_config %}
+    var django_wysiwyg_editor_config = {};
+    {% endblock %}
+
 
     var django_wysiwyg =
     {
@@ -31,17 +36,27 @@ The required API functions have the following structure::
         is_loaded: function()
         {
             // ... some test to see if the scripts were loaded properly.
-            return window.MYEDITOR != null;
+            return window.MY_EDITOR != null;
         },
 
-        enable: function(editor_name, field_name)
+        enable: function(editor_name, field_name, config)
         {
-            this.editors[editor_name] = // ... enable the editor for the field name
+            if( !config ) {
+                config = django_wysiwyg_editor_configs[field_id] || django_wysiwyg_editor_config;
+            }
+
+            if( !this.editors[editor_name] ) {
+                this.editors[editor_name] = // ... enable the editor for the field name
+            }
         },
 
         disable: function(editor_name)
         {
-            // ... disable the editor
+            var editor = this.editors[editor_name];
+            if( editor ) {
+                editor.the_destroy_function();   // ... call the destroy function
+                this.editors[editor_name] = null;
+            }
         }
     }
 
@@ -62,7 +77,10 @@ The contents of the template can look something like:
 ::
 
     <script type="text/javascript">
-        django_wysiwyg.enable('{{ editor_name }}', '{{ field_id }}');
+        (function(){
+            var config = {{ config }};
+            django_wysiwyg.enable('{{ editor_name }}', '{{ field_id }}', config);
+        })();
     </script>
 
 In most cases, this should be enough to instantiate the editor for a specific field.

@@ -71,12 +71,12 @@ Other editors
 
 The following values are allowed for the ``DJANGO_WYSIWYG_FLAVOR`` setting:
 
-* ``ckeditor`` - CKEditor from http://ckeditor.com/
-* ``redactor`` - Redactor editor from http://redactorjs.com/ (requires a license)
-* ``tinymce`` - the TinyMCE editor from http://www.tinymce.com/, in simple mode.
-* ``tinymce_advanced`` - the TinyMCE editor with many more toolbar buttons
-* ``yui`` - a basic YUI editor (the default)
-* ``yui_advanced`` - the YUI editor with many more toolbar buttons
+* *ckeditor*         - The CKEditor_, formally known as FCKEditor.
+* *redactor*         - The Redactor_ editor (requires a license).
+* *tinymce*          - The TinyMCE_ editor, in simple mode.
+* *tinymce_advanced* - The TinyMCE_ editor with many more toolbar buttons.
+* *yui*              - The YAHOO_ editor (the default)>
+* *yui_advanced*     - The YAHOO_ editor with more toolbar buttons.
 
 Other editors can be supported by provinding the required templates;
 see http://django-wysiwyg.readthedocs.org/en/latest/extending.html
@@ -178,5 +178,9 @@ from untrusted users*
 attempts to do so but is only available with html5lib (tidylib has no
 equivalent mode) and should currently be considered experimental.
 
+.. _CKEditor: http://ckeditor.com/
+.. _Redactor: http://redactorjs.com/
+.. _TinyMCE: http://www.tinymce.com/
+.. _YAHOO: http://developer.yahoo.com/yui/editor/
 .. _django-ckeditor: https://github.com/shaunsephton/django-ckeditor
 .. _django-tinymce: https://github.com/aljosa/django-tinymce
