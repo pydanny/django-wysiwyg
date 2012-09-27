@@ -20,15 +20,11 @@ def clean_html5lib(input):
     from html5lib import treebuilders, treewalkers, serializer, sanitizer
 
     p = html5lib.HTMLParser(tree=treebuilders.getTreeBuilder("dom"))
-
     dom_tree = p.parseFragment(input)
-
     walker = treewalkers.getTreeWalker("dom")
-
     stream = walker(dom_tree)
 
     s = serializer.htmlserializer.HTMLSerializer(omit_optional_tags=False)
-
     return "".join(s.serialize(stream))
 
 def sanitize_html5lib(input):
@@ -43,9 +39,7 @@ def sanitize_html5lib(input):
 
     p = html5lib.HTMLParser(tokenizer=sanitizer.HTMLSanitizer, tree=treebuilders.getTreeBuilder("dom"))
     dom_tree = p.parseFragment(input)
-
     walker = treewalkers.getTreeWalker("dom")
-
     stream = walker(dom_tree)
 
     s = serializer.htmlserializer.HTMLSerializer(omit_optional_tags=False)
