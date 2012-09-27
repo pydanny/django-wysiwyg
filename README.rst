@@ -48,6 +48,13 @@ distributables under `STATIC_URL/ckeditor` or set `DJANGO_WYSIWYG_MEDIA_URL`
 in `settings.py` to the appropriate location containing the ckeditor
 distribution.
 
+The following values are allowed for the ``DJANGO_WYSIWYG_FLAVOR`` setting:
+
+* ``yui`` - a basic YUI editor (the default)
+* ``yui_advanced`` - the YUI editor with many more toolbar buttons
+* ``ckeditor`` - CKEditor from http://ckeditor.com/
+* ``redactor`` - Redactor editor from http://redactorjs.com/ (requires a license)
+
 Usage
 ~~~~~~
 
