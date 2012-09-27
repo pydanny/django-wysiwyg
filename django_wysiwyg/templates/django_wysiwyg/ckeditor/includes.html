@@ -2,8 +2,8 @@
     CKEditor requires you to have the resources referenced below installed
     under your STATIC_URL. You can download them from ckeditor.com.
 {% endcomment %}
-
-<script type="text/javascript" src="{{ DJANGO_WYSIWYG_MEDIA_URL }}ckeditor/ckeditor.js"></script>
+{% load wysiwyg %}
+<script type="text/javascript" src="{% wysiwyg_static_url "ckeditor" "ckeditor/ckeditor/" DJANGO_WYSIWYG_MEDIA_URL %}ckeditor.js"></script>
 <script type="text/javascript">
     var django_wysiwyg =
     {

@@ -39,14 +39,31 @@ Add `'django_wysiwyg'` to your `INSTALLED_APPS` in `settings.py`::
         'django_wysiwyg',
     )
 
+Using the CKEditor
+------------------
+
 If you wish to use CKEditor set the flavor in `settings.py`::
 
     DJANGO_WYSIWYG_FLAVOR = "ckeditor"
 
-Please note that doing so requires you to either place the ckeditor
-distributables under `STATIC_URL/ckeditor` or set `DJANGO_WYSIWYG_MEDIA_URL`
-in `settings.py` to the appropriate location containing the ckeditor
-distribution.
+Please note that doing so requires you to make sure the CKEditor distributables are available.
+You can either:
+
+* place the ckeditor distributables under `STATIC_URL/ckeditor`
+* install django-ckeditor_ and include it in the ``INSTALLED_APPS``
+* set `DJANGO_WYSIWYG_MEDIA_URL` in `settings.py` to the appropriate location containing the ckeditor distribution.
+
+Other editors
+-------------
+
+The following values are allowed for the ``DJANGO_WYSIWYG_FLAVOR`` setting:
+
+* ``yui`` - a basic YUI editor (the default)
+* ``yui_advanced`` - the YUI editor with many more toolbar buttons
+* ``ckeditor`` - CKEditor from http://ckeditor.com/
+
+Other editors can be supported by provinding the required templates;
+see http://django-wysiwyg.readthedocs.org/en/latest/extending.html
 
 Usage
 ~~~~~~
@@ -144,3 +161,5 @@ from untrusted users*
 `clean_html` does not protect against security problems; `sanitize_html`
 attempts to do so but is only available with html5lib (tidylib has no
 equivalent mode) and should currently be considered experimental.
+
+.. _django-ckeditor: https://github.com/shaunsephton/django-ckeditor
