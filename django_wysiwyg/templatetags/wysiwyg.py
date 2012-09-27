@@ -1,5 +1,3 @@
-from urlparse import urljoin
-
 from django import template
 from django.conf import settings
 from django.template.loader import render_to_string
@@ -9,7 +7,7 @@ register = template.Library()
 def get_settings():
     """Utility function to retrieve settings.py values with defaults"""
     return {
-        "DJANGO_WYSIWYG_MEDIA_URL": getattr(settings, "DJANGO_WYSIWYG_MEDIA_URL", urljoin(settings.STATIC_URL, "ckeditor/")),
+        "DJANGO_WYSIWYG_MEDIA_URL": getattr(settings, "DJANGO_WYSIWYG_MEDIA_URL", settings.STATIC_URL),
         "DJANGO_WYSIWYG_FLAVOR":    getattr(settings, "DJANGO_WYSIWYG_FLAVOR", "yui"),
         }
 
