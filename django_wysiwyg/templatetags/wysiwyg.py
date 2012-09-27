@@ -1,3 +1,4 @@
+from urlparse import urljoin
 from django import template
 from django.conf import settings
 from django.template.loader import render_to_string
@@ -56,3 +57,18 @@ def wysiwyg_editor(field_id, editor_name=None, config=None):
         "django_wysiwyg/%s/editor_instance.html" % ctx['DJANGO_WYSIWYG_FLAVOR'],
         ctx
     )
+
+
+@register.simple_tag
+def wysiwyg_static_url(appname, prefix, default_path):
+    """
+    Automatically use an prefix if a given application is installed.
+    For example, if django-ckeditor is installed, use it's STATIC_URL/ckeditor folder to find the CKEditor distribution.
+    When the application does not available, fallback to the default path.
+
+    This is a function for the internal templates of *django-wysiwyg*.
+    """
+    if appname in settings.INSTALLED_APPS:
+        return urljoin(settings.STATIC_URL, prefix) + '/'
+    else:
+        return default_path
