@@ -1,2 +1,4 @@
 *.pyc
-dev.db
+docs/_build/
+dist/
+*.egg-info/

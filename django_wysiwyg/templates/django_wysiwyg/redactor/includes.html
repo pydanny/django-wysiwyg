@@ -1,15 +1,17 @@
 {% comment %}
-    CKEditor requires you to have the resources referenced below installed under your STATIC_URL/ckeditor.
-    You can download them from ckeditor.com, or include django-ckeditor in your project.
+    Refactor requires you to have the resources referenced below installed under your STATIC_URL.
+    You can download them from http://redactorjs.com/
 {% endcomment %}
+
 {% load wysiwyg %}
-<script type="text/javascript" src="{% wysiwyg_static_url "ckeditor" "ckeditor/ckeditor/" DJANGO_WYSIWYG_MEDIA_URL %}ckeditor.js"></script>
+<link rel="stylesheet" type="text/css" href="{{ DJANGO_WYSIWYG_MEDIA_URL }}css/redactor.css"/>
+<script type="text/javascript" src="{{ DJANGO_WYSIWYG_MEDIA_URL }}redactor.min.js"></script>
 <script type="text/javascript">
     var django_wysiwyg_editor_configs = [];   // allow custom settings per editor ID{% block django_wysiwyg_editor_config %}
     var django_wysiwyg_editor_config = {};
-  {% endblock %}
+{% endblock %}
 
-  var django_wysiwyg =
+    var django_wysiwyg =
     {
         editors: {},
 
@@ -20,7 +22,7 @@
             }
 
             if( !this.editors[editor_name] ) {
-                this.editors[editor_name] = CKEDITOR.replace(field_id, config);
+                this.editors[editor_name] = jQuery("#" + field_id).redactor(config);
             }
         },
 
@@ -28,14 +30,14 @@
         {
             var editor = this.editors[editor_name];
             if( editor ) {
-                editor.destroy(/*noUpdate=*/false);
+                editor.destroyEditor();
                 this.editors[editor_name] = null;
             }
         },
 
         is_loaded: function django_wysiwyg_is_loaded()
         {
-            return window.CKEDITOR != null;
+            return window.jQuery != null && window.jQuery.fn.redactor != null;
         }
     }
 </script>

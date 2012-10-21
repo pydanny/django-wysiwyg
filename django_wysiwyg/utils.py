@@ -20,19 +20,16 @@ def clean_html5lib(input):
     from html5lib import treebuilders, treewalkers, serializer, sanitizer
 
     p = html5lib.HTMLParser(tree=treebuilders.getTreeBuilder("dom"))
-
     dom_tree = p.parseFragment(input)
-
     walker = treewalkers.getTreeWalker("dom")
-
     stream = walker(dom_tree)
 
     s = serializer.htmlserializer.HTMLSerializer(omit_optional_tags=False)
-
     return "".join(s.serialize(stream))
 
 def sanitize_html5lib(input):
     """
+    Removes any unwanted HTML tags and attributes, using html5lib.
 
     >>> sanitize_html5lib("foobar<p>adf<i></p>abc</i>")
     u'foobar<p>adf<i></i></p><i>abc</i>'
@@ -43,16 +40,14 @@ def sanitize_html5lib(input):
 
     p = html5lib.HTMLParser(tokenizer=sanitizer.HTMLSanitizer, tree=treebuilders.getTreeBuilder("dom"))
     dom_tree = p.parseFragment(input)
-
     walker = treewalkers.getTreeWalker("dom")
-
     stream = walker(dom_tree)
 
     s = serializer.htmlserializer.HTMLSerializer(omit_optional_tags=False)
     return "".join(s.serialize(stream))
 
 def clean_pytidylib(input):
-    (cleaned_html, warnings) = tidylib.tidy_document(html)
+    (cleaned_html, warnings) = tidylib.tidy_document(input)
     return cleaned_html
 
 try:
@@ -61,7 +56,7 @@ try:
 except ImportError:
     try:
         import tidylib
-        clean_html = clean_tidylib
+        clean_html = clean_pytidylib
     except ImportError:
         pass
 

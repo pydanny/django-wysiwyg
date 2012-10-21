@@ -1,0 +1,53 @@
+{% comment %}
+    TinyMCE requires you to have the resources referenced below installed under your STATIC_URL/tinymce.
+    You can download them from tinymce.com, or include django-tinymce in your project.
+{% endcomment %}
+{% load wysiwyg %}
+<script type="text/javascript" src="{% wysiwyg_static_url "tinymce" "tiny_mce/" DJANGO_WYSIWYG_MEDIA_URL %}tiny_mce_src.js"></script>
+<script type="text/javascript">
+    var django_wysiwyg_editor_configs = [];   // allow custom settings per editor ID{% block django_wysiwyg_editor_config %}
+    var django_wysiwyg_editor_config = {
+        relative_urls: false,
+        theme: "simple",
+        width: '610px',
+        strict_loading_mode: true
+    };
+{% endblock %}
+
+    var django_wysiwyg =
+    {
+        editors: {},
+
+        enable: function django_wysiwyg_enable(editor_name, field_id, config)
+        {
+            if( !this.editors[editor_name] ) {
+                if( !config ) {
+                    config = django_wysiwyg_editor_configs[field_id] || django_wysiwyg_editor_config;
+                }
+                config = tinymce.extend(config, {
+                    mode: "exact",
+                    elements: field_id
+                });
+
+                tinymce.dom.Event.add(document, 'init', function(){
+                    tinyMCE.init(config);
+                    django_wysiwyg.editors[editor_name] = tinyMCE.editors[field_id];
+                });
+            }
+        },
+
+        disable: function django_wysiwyg_disable(editor_name)
+        {
+            var editor = this.editors[editor_name];
+            if( editor ) {
+                editor.remove();
+                this.editors[editor_name] = null;
+            }
+        },
+
+        is_loaded: function django_wysiwyg_is_loaded()
+        {
+            return window.tinyMCE != null;
+        }
+    }
+</script>
