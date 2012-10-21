@@ -1,3 +1,15 @@
+__author__ = 'Daniel Greenfeld, Chris Adams'
+
+VERSION = (0, 5, 0)
+
+def get_version():
+    version = '%s.%s' % (VERSION[0], VERSION[1])
+    if VERSION[2]:
+        version = '%s.%s' % (version, VERSION[2])
+    return version
+
+__version__ = get_version()
+
 def clean_html():
     raise ImportError("clean_html requires html5lib or pytidylib")
 
