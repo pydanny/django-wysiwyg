@@ -5,8 +5,8 @@ DJANGO WYSIWYG
 
 A Django application for easily converting HTML <textarea>s into rich HTML
 editors that meet US Government 508/WAC standards. This application has been
-demonstrated to work just fine with django-uni-form
-(http://github.com/pydanny/django-uni-form).
+demonstrated to work just fine with django-crispy-forms
+(https://github.com/maraujop/django-crispy-forms).
 
 Currently this works as a template tag. We did it this way because control of
 how editing works is arguably a template issue (i.e. presentation) and not a
