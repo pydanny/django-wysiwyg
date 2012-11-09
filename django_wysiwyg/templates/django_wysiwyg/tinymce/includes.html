@@ -8,9 +8,12 @@
     var django_wysiwyg_editor_configs = [];   // allow custom settings per editor ID{% block django_wysiwyg_editor_config %}
     var django_wysiwyg_editor_config = {
         relative_urls: false,
-        theme: "simple",
+        custom_undo_redo_levels: 10,
+        plugins: 'paste,autoresize',
+        strict_loading_mode: true,  // for pre 3.4 releases
+
         width: '610px',
-        strict_loading_mode: true
+        theme: "simple"
     };
 {% endblock %}
 
