@@ -32,7 +32,7 @@
                     elements: field_id
                 });
 
-                tinymce.dom.Event.add(document, 'init', function(){
+                tinymce.dom.Event.add(window, 'init', function(){
                     tinyMCE.init(config);
                     django_wysiwyg.editors[editor_name] = tinyMCE.editors[field_id];
                 });
@@ -43,6 +43,7 @@
         {
             var editor = this.editors[editor_name];
             if( editor ) {
+                editor.save();
                 editor.remove();
                 this.editors[editor_name] = null;
             }
