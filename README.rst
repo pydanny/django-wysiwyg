@@ -117,9 +117,9 @@ the following:
 
     admin.site.register(Playground, PlaygroundAdmin)
 
-#. copy ``django_wysiwyg/templates/my-app-name/admin/change_form.html`` to  ``my_app/templates/<my-app-name>/adminchange_form.html``. For example::
+#. copy ``django_wysiwyg/templates/my-app-name/admin/change_form.html`` to  ``my_app/templates/<my-app-name>/admin/change_form.html``. For example::
 
-    cp django_wysiwyg/templates/admin/my-app-name/change_form.html pydanny/templates/fun/admin/change_form.html
+    cp django_wysiwyg/templates/my-app-name/admin/change_form.html pydanny/templates/fun/admin/change_form.html
 
 #. Now open the new ``pydanny/templates/my-app-name/admin/change_form.html`` file. You
    will need to set the fields you want made into rich text editors by adding
