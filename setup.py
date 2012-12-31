@@ -33,7 +33,7 @@ setup(
     author_email='pydanny@gmail.com',
     url='https://github.com/pydanny/django-wysiwyg',
     license='MIT',
-    packages=find_packages(exclude=('test_project',)),
+    packages=find_packages(exclude=('test_project*',)),
     include_package_data=True,
     zip_safe=False
 )
