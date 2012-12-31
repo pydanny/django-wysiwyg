@@ -70,3 +70,31 @@
 	{# ... add more here... #}
 
 {% endblock %}
+
+{% block after_related_objects %}
+    <p>
+        Editor is <span id="loaded-status"></span>. Testing:
+    </p>
+    <ul>
+        <li><a href="javascript:toggleEditor();">enable/disable editor</a></li>
+    </ul>
+    <script type="text/javascript">
+        document.getElementById('loaded-status').innerHTML = django_wysiwyg.is_loaded() ? 'loaded': 'not loaded!!';
+
+        function toggleEditor() {
+            if(! django_wysiwyg.is_loaded()) {
+                alert("The editor <script> files are missing or didn't load.\nPlease check the installation instructions of django-wysiwyg");
+                return;
+            }
+
+            var hasEditor = django_wysiwyg.editors['id_body_editor'] != null;
+
+            if(hasEditor) {
+                django_wysiwyg.disable('id_body_editor');
+            }
+            else {
+                django_wysiwyg.enable('id_body_editor', 'id_body', null);
+            }
+        }
+    </script>
+{% endblock %}
