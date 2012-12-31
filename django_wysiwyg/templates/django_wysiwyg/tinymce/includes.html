@@ -34,13 +34,13 @@
                 tinyMCE.extend(localconfig, config);
                 tinyMCE.extend(localconfig, {
                     mode: "exact",
-                    elements: field_id
+                    elements: field_id,
+                    setup: function(editor) {
+                        django_wysiwyg.editors[editor_name] = editor;
+                    }
                 });
 
-                tinymce.dom.Event.add(window, 'init', function(){
-                    tinyMCE.init(localconfig);
-                    django_wysiwyg.editors[editor_name] = tinyMCE.editors[field_id];
-                });
+                tinyMCE.init(localconfig);
             }
         },
 
