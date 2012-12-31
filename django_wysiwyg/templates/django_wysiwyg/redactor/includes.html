@@ -23,7 +23,9 @@
             }
 
             if( !this.editors[editor_name] ) {
-                this.editors[editor_name] = jQuery("#" + field_id).redactor(config);
+                jQuery.fn.ready(function(){
+                    django_wysiwyg.editors[editor_name] = jQuery("#" + field_id).redactor(config);
+                });
             }
         },
 
