@@ -87,3 +87,27 @@ DJANGO_WYSIWYG_FLAVOR = 'yui'       # Default
 # NOTE: If you are using DJANGO 1.3, you will want to follow the docs and use
 # STATIC_URL instead of MEDIA_URL here.
 # DJANGO_WYSIWYG_MEDIA_URL = "%s/ckeditor" % MEDIA_URL
+
+
+# Support newer Django versions:
+import django
+if django.VERSION >= (1,3):
+    STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+    STATIC_URL = '/static/'
+
+    ADMIN_MEDIA_PREFIX = '/static/admin/'
+
+    INSTALLED_APPS += (
+        "django.contrib.staticfiles",
+    )
+
+    DATABASES = {
+        'default': {
+            'ENGINE':   'django.db.backends.' + DATABASE_ENGINE,
+            'NAME':     DATABASE_NAME,
+            'USER':     DATABASE_USER,
+            'PASSWORD': DATABASE_PASSWORD,
+            'HOST':     DATABASE_HOST,
+            'PORT':     DATABASE_PORT,
+        },
+    }
