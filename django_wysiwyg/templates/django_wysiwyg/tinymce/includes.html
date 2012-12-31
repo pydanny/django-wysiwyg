@@ -3,9 +3,10 @@
     You can download them from tinymce.com, or include django-tinymce in your project.
 {% endcomment %}
 {% load wysiwyg %}
-<script type="text/javascript" src="{% wysiwyg_static_url "tinymce" "tiny_mce/" DJANGO_WYSIWYG_MEDIA_URL %}tiny_mce_src.js"></script>
+<script type="text/javascript" src="{% wysiwyg_static_url 'tinymce' 'tiny_mce/' DJANGO_WYSIWYG_MEDIA_URL %}tiny_mce_src.js"></script>
 <script type="text/javascript">
-    var django_wysiwyg_editor_configs = [];   // allow custom settings per editor ID{% block django_wysiwyg_editor_config %}
+    // allow custom settings per editor ID:
+    var django_wysiwyg_editor_configs = [];{% block django_wysiwyg_editor_config %}
     var django_wysiwyg_editor_config = {
         relative_urls: false,
         custom_undo_redo_levels: 10,

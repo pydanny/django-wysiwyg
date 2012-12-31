@@ -7,7 +7,8 @@
 <link rel="stylesheet" type="text/css" href="{{ DJANGO_WYSIWYG_MEDIA_URL }}css/redactor.css"/>
 <script type="text/javascript" src="{{ DJANGO_WYSIWYG_MEDIA_URL }}redactor.min.js"></script>
 <script type="text/javascript">
-    var django_wysiwyg_editor_configs = [];   // allow custom settings per editor ID{% block django_wysiwyg_editor_config %}
+    // allow custom settings per editor ID:
+    var django_wysiwyg_editor_configs = [];{% block django_wysiwyg_editor_config %}
     var django_wysiwyg_editor_config = {};
 {% endblock %}
 
