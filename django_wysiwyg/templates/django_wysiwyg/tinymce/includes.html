@@ -28,13 +28,17 @@
                 if( !config ) {
                     config = django_wysiwyg_editor_configs[field_id] || django_wysiwyg_editor_config;
                 }
-                config = tinymce.extend(config, {
+
+                // Apply extra settings in local copy.
+                var localconfig = {};
+                tinyMCE.extend(localconfig, config);
+                tinyMCE.extend(localconfig, {
                     mode: "exact",
                     elements: field_id
                 });
 
                 tinymce.dom.Event.add(window, 'init', function(){
-                    tinyMCE.init(config);
+                    tinyMCE.init(localconfig);
                     django_wysiwyg.editors[editor_name] = tinyMCE.editors[field_id];
                 });
             }
