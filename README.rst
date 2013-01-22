@@ -78,7 +78,7 @@ The following values are allowed for the ``DJANGO_WYSIWYG_FLAVOR`` setting:
 * *yui*              - The YAHOO_ editor (the default)>
 * *yui_advanced*     - The YAHOO_ editor with more toolbar buttons.
 
-Other editors can be supported by provinding the required templates;
+Other editors can be supported by providing the required templates;
 see http://django-wysiwyg.readthedocs.org/en/latest/extending.html
 
 Usage
