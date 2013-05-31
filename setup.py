@@ -1,15 +1,30 @@
 #!/usr/bin/env python
 from setuptools import setup, find_packages
+from os import path
+import codecs
+import os
+import re
+import sys
 
-import django_wysiwyg
 
-LONG_DESCRIPTION = open('README.rst').read()
+def read(*parts):
+    file_path = path.join(path.dirname(__file__), *parts)
+    return codecs.open(file_path, encoding='utf-8').read()
+
+
+def find_variable(variable, *parts):
+    version_file = read(*parts)
+    version_match = re.search(r"^{0} = ['\"]([^'\"]*)['\"]".format(variable), version_file, re.M)
+    if version_match:
+        return str(version_match.group(1))
+    raise RuntimeError("Unable to find version string.")
+
 
 setup(
     name='django-wysiwyg',
-    version=django_wysiwyg.get_version(),
+    version=find_variable('__version__', 'django_wysiwyg', '__init__.py'),
     description="django-wysiwyg",
-    long_description=LONG_DESCRIPTION,
+    long_description=read('README.rst'),
     classifiers=[
         "Development Status :: 4 - Beta",
         "Environment :: Web Environment",
@@ -30,7 +45,7 @@ setup(
         "Topic :: Text Processing :: Markup :: HTML"
     ],
     keywords='django,wysiwyg,redactor,ckeditor,tinymce',
-    author=django_wysiwyg.__author__,
+    author=find_variable('__author__', 'django_wysiwyg', '__init__.py'),
     author_email='pydanny@gmail.com',
     url='https://github.com/pydanny/django-wysiwyg',
     license='MIT',
