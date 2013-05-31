@@ -1,4 +1,6 @@
-#!/usr/bin/env python
+"""
+Utilities for cleaning HTML code.
+"""
 
 def clean_html(*args, **kwargs):
     raise ImportError("clean_html requires html5lib or pytidylib")
