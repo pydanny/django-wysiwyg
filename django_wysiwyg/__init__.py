@@ -19,11 +19,11 @@ def sanitize_html():
 
 try:
     import html5lib
-    from utils import clean_html5lib as clean_html
-    from utils import sanitize_html5lib as sanitize_html
+    from .utils import clean_html5lib as clean_html
+    from .utils import sanitize_html5lib as sanitize_html
 except ImportError:
     try:
         import tidylib
-        from utils import clean_tidylib as clean_html
+        from .utils import clean_tidylib as clean_html
     except ImportError:
         pass
