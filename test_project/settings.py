@@ -1,5 +1,5 @@
 # Django settings for test_project project.
-
+from __future__ import print_function
 import os
 import sys
 
@@ -115,12 +115,12 @@ if django.VERSION >= (1,3):
 
 # Auto configure resources for editor flavors:
 if 'tinymce' in DJANGO_WYSIWYG_FLAVOR:
-    print "NOTE: Adding 'tinymce' to INSTALLED_APPS"
+    print("NOTE: Adding 'tinymce' to INSTALLED_APPS")
     INSTALLED_APPS += (
         'tinymce',
     )
 elif 'ckeditor' in DJANGO_WYSIWYG_FLAVOR:
-    print "NOTE: Adding 'ckeditor' to INSTALLED_APPS"
+    print("NOTE: Adding 'ckeditor' to INSTALLED_APPS")
     INSTALLED_APPS += (
         'ckeditor',
     )
