@@ -1,8 +1,11 @@
-from urlparse import urljoin
-
 from django import template
 from django.conf import settings
 from django.template.loader import render_to_string
+
+try:
+    from urlparse import urljoin
+except ImportError:
+    from urllib.parse import urljoin
 
 register = template.Library()
 
