@@ -50,7 +50,7 @@ Please note that doing so requires you to make sure the CKEditor distributables 
 You can either:
 
 * place the ckeditor distributables under `STATIC_URL/ckeditor`
-* install django-ckeditor_ and include it in the ``INSTALLED_APPS``
+* install django-ckeditor (either `Shaun Sephton's official package`_ or an up-to-date fork, like the `one provided by Piotr Malinski`_) and include it in the ``INSTALLED_APPS``
 * set `DJANGO_WYSIWYG_MEDIA_URL` in `settings.py` to the appropriate location containing the ckeditor distribution.
 
 Using TinyMCE
@@ -182,5 +182,6 @@ equivalent mode) and should currently be considered experimental.
 .. _Redactor: http://redactorjs.com/
 .. _TinyMCE: http://www.tinymce.com/
 .. _YAHOO: http://developer.yahoo.com/yui/editor/
-.. _django-ckeditor: https://github.com/shaunsephton/django-ckeditor
+.. _Shaun Sephton's official package: https://github.com/shaunsephton/django-ckeditor
+.. _one provided by Piotr Malinski: https://github.com/riklaunim/django-ckeditor
 .. _django-tinymce: https://github.com/aljosa/django-tinymce
