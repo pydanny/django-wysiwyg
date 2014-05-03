@@ -1,4 +1,4 @@
-__author__ = 'Daniel Greenfeld, Chris Adams'
+__author__ = 'Daniel Greenfeld, Chris Adams, Diederik van der Boor'
 __version__ = "0.6.0"
 
 VERSION = __version__.split('.')
