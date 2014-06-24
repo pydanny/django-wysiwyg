@@ -73,6 +73,7 @@ The following values are allowed for the ``DJANGO_WYSIWYG_FLAVOR`` setting:
 
 * *ckeditor*         - The CKEditor_, formally known as FCKEditor.
 * *redactor*         - The Redactor_ editor (requires a license).
+* *froala*           - The Froala_ editor (requires a license).
 * *tinymce*          - The TinyMCE_ editor, in simple mode.
 * *tinymce_advanced* - The TinyMCE_ editor with many more toolbar buttons.
 * *yui*              - The YAHOO_ editor (the default)>
@@ -180,6 +181,7 @@ equivalent mode) and should currently be considered experimental.
 
 .. _CKEditor: http://ckeditor.com/
 .. _Redactor: http://redactorjs.com/
+.. _Froala: http://editor.froala.com/
 .. _TinyMCE: http://www.tinymce.com/
 .. _YAHOO: http://developer.yahoo.com/yui/editor/
 .. _Shaun Sephton's official package: https://github.com/shaunsephton/django-ckeditor
