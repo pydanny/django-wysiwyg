@@ -1,0 +1,51 @@
+{% comment %}
+    froala requires you to have the resources referenced below installed under your STATIC_URL.
+    You can download them from http://editor.froala.com/download
+{% endcomment %}
+
+{% load wysiwyg %}
+<!-- jquery is required for froala -->
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+
+<link rel="stylesheet" type="text/css" href="{{ DJANGO_WYSIWYG_MEDIA_URL }}css/font-awesome.min.css"/>
+<link rel="stylesheet" type="text/css" href="{{ DJANGO_WYSIWYG_MEDIA_URL }}css/froala_editor.min.css"/>
+<script type="text/javascript" src="{{ DJANGO_WYSIWYG_MEDIA_URL }}froala_editor.min.js"></script>
+
+<script type="text/javascript">
+    // allow custom settings per editor ID:
+    var django_wysiwyg_editor_configs = [];{% block django_wysiwyg_editor_config %}
+    var django_wysiwyg_editor_config = {};
+{% endblock %}
+
+    var django_wysiwyg =
+    {
+        editors: {},
+
+        enable: function django_wysiwyg_enable(editor_name, field_id, config)
+        {
+            if( !config ) {
+                config = django_wysiwyg_editor_configs[field_id] || django_wysiwyg_editor_config;
+            }
+
+            if( !this.editors[editor_name] ) {
+                jQuery.fn.ready(function(){
+                    django_wysiwyg.editors[editor_name] = jQuery("#" + field_id).editable(config);
+                });
+            }
+        },
+
+        disable: function django_wysiwyg_disable(editor_name)
+        {
+            var editor = this.editors[editor_name];
+            if( editor ) {
+                editor.destroyEditor();
+                this.editors[editor_name] = null;
+            }
+        },
+
+        is_loaded: function django_wysiwyg_is_loaded()
+        {
+            return window.jQuery != null && window.jQuery.fn.editable != null;
+        }
+    }
+</script>

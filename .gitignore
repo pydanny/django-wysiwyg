@@ -2,3 +2,4 @@
 docs/_build/
 dist/
 *.egg-info/
+.DS_Store

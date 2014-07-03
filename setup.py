@@ -45,7 +45,7 @@ setup(
         "Topic :: Text Processing :: Fonts",
         "Topic :: Text Processing :: Markup :: HTML"
     ],
-    keywords='django,wysiwyg,redactor,ckeditor,tinymce',
+    keywords='django,wysiwyg,redactor,ckeditor,tinymce,froala',
     author=find_variable('__author__', 'django_wysiwyg', '__init__.py'),
     author_email='pydanny@gmail.com',
     url='https://github.com/pydanny/django-wysiwyg',
