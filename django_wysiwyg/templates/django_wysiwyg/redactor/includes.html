@@ -33,7 +33,7 @@
         {
             var editor = this.editors[editor_name];
             if( editor ) {
-                editor.destroyEditor();
+                editor.redactor('core.destroy');
                 this.editors[editor_name] = null;
             }
         },
