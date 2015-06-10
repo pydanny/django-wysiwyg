@@ -30,7 +30,7 @@ Media sources
 
 When you use one of the editors, you need to make sure that the editor distributables
 are also located in your project. By default *django-wysiwyg* looks for a `STATIC_URL/flavor` folder.
-You can also install django-ckeditor (either the `official package`_ or an `updated fork`_) or django-tinymce_ to have the CKEditor_ and TinyMCE_ distributables respectively.
+You can also install django-ckeditor_ or django-tinymce_ to have the CKEditor_ and TinyMCE_ distributables respectively.
 *django-wysiwyg* will automatically find their sources if they are mentioned in the ``INSTALLED_APPS``.
 
 It's also possible to add new editors, see :doc:`extending django-wysiwyg <extending>`
@@ -40,6 +40,5 @@ It's also possible to add new editors, see :doc:`extending django-wysiwyg <exten
 .. _Redactor: http://redactorjs.com/
 .. _TinyMCE: http://www.tinymce.com/
 .. _YAHOO: http://developer.yahoo.com/yui/editor/
-.. _official package: https://github.com/shaunsephton/django-ckeditor
-.. _updated fork: https://github.com/riklaunim/django-ckeditor
+.. _django-ckeditor: https://github.com/django-ckeditor/django-ckeditor
 .. _django-tinymce: https://github.com/aljosa/django-tinymce
