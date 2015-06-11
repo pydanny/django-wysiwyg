@@ -19,6 +19,8 @@ def find_variable(variable, *parts):
         return str(version_match.group(1))
     raise RuntimeError("Unable to find version string.")
 
+version = find_variable('__version__', 'django_wysiwyg', '__init__.py')
+
 if sys.argv[-1] == 'publish':
     os.system('python setup.py sdist upload')
     os.system('python setup.py bdist_wheel upload')
@@ -33,7 +35,7 @@ if sys.argv[-1] == 'tag':
 
 setup(
     name='django-wysiwyg',
-    version=find_variable('__version__', 'django_wysiwyg', '__init__.py'),
+    version=version,
     description="django-wysiwyg",
     long_description=read('README.rst'),
     classifiers=[
