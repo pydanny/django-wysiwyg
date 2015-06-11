@@ -10,3 +10,5 @@ Authors:
  * Micky Hulse
  * Renyi Khor
  * Shabda Raaj
+ * Martey Dodoo
+ * Addy Yeow

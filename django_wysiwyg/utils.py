@@ -48,13 +48,14 @@ def sanitize_html5lib(input):
     s = serializer.htmlserializer.HTMLSerializer(omit_optional_tags=False)
     return "".join(s.serialize(stream))
 
+
 def clean_pytidylib(input):
     (cleaned_html, warnings) = tidylib.tidy_document(input)
     return cleaned_html
 
 try:
     import html5lib
-    clean_html,  sanitize_html = clean_html5lib, sanitize_html5lib
+    clean_html,  sanitize_html = clean_html5lib, sanitize_html5lib  # noqa
 except ImportError:
     try:
         import tidylib

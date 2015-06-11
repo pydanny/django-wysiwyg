@@ -19,6 +19,17 @@ def find_variable(variable, *parts):
         return str(version_match.group(1))
     raise RuntimeError("Unable to find version string.")
 
+if sys.argv[-1] == 'publish':
+    os.system('python setup.py sdist upload')
+    os.system('python setup.py bdist_wheel upload')
+    sys.exit()
+
+if sys.argv[-1] == 'tag':
+    print("Tagging the version on github:")
+    os.system("git tag -a %s -m 'version %s'" % (version, version))
+    os.system("git push --tags")
+    sys.exit()
+
 
 setup(
     name='django-wysiwyg',

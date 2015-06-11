@@ -9,6 +9,7 @@ except ImportError:
 
 register = template.Library()
 
+
 def get_settings():
     """Utility function to retrieve settings.py values with defaults"""
     flavor = getattr(settings, "DJANGO_WYSIWYG_FLAVOR", "yui")
