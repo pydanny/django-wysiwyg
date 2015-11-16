@@ -10,9 +10,12 @@ except ImportError:
 register = template.Library()
 
 
-def get_settings():
+def get_settings(editor_override=None):
     """Utility function to retrieve settings.py values with defaults"""
     flavor = getattr(settings, "DJANGO_WYSIWYG_FLAVOR", "yui")
+
+    if editor_override is not None:
+        flavor = editor_override
 
     return {
         "DJANGO_WYSIWYG_MEDIA_URL": getattr(settings, "DJANGO_WYSIWYG_MEDIA_URL", urljoin(settings.STATIC_URL, flavor) + '/'),
@@ -21,7 +24,7 @@ def get_settings():
 
 
 @register.simple_tag
-def wysiwyg_setup(protocol="http"):
+def wysiwyg_setup(protocol="http", editor_override=None):
     """
     Create the <style> and <script> tags needed to initialize the rich text editor.
 
@@ -31,7 +34,7 @@ def wysiwyg_setup(protocol="http"):
     ctx = {
         "protocol": protocol,
     }
-    ctx.update(get_settings())
+    ctx.update(get_settings(editor_override=editor_override))
 
     return render_to_string(
         "django_wysiwyg/%s/includes.html" % ctx['DJANGO_WYSIWYG_FLAVOR'],
@@ -40,7 +43,7 @@ def wysiwyg_setup(protocol="http"):
 
 
 @register.simple_tag
-def wysiwyg_editor(field_id, editor_name=None, config=None):
+def wysiwyg_editor(field_id, editor_name=None, config=None, editor_override=None):
     """
     Turn the textarea #field_id into a rich editor. If you do not specify the
     JavaScript name of the editor, it will be derived from the field_id.
@@ -58,7 +61,10 @@ def wysiwyg_editor(field_id, editor_name=None, config=None):
         'editor_name':  editor_name,
         'config': config
     }
-    ctx.update(get_settings())
+    ctx.update(get_settings(editor_override=editor_override))
+
+    if editor_override is not None:
+        ctx['DJANGO_WYSIWYG_FLAVOR'] = editor_override
 
     return render_to_string(
         "django_wysiwyg/%s/editor_instance.html" % ctx['DJANGO_WYSIWYG_FLAVOR'],
