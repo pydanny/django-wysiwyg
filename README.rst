@@ -78,6 +78,7 @@ The following values are allowed for the ``DJANGO_WYSIWYG_FLAVOR`` setting:
 * *tinymce_advanced* - The TinyMCE_ editor with many more toolbar buttons.
 * *yui*              - The YAHOO_ editor (the default)>
 * *yui_advanced*     - The YAHOO_ editor with more toolbar buttons.
+* *alloyeditor*      - The AlloyEditor_, a modern editor based on CKEditor
 
 Other editors can be supported by providing the required templates;
 see http://django-wysiwyg.readthedocs.org/en/latest/extending.html
@@ -184,5 +185,6 @@ equivalent mode) and should currently be considered experimental.
 .. _Froala: http://editor.froala.com/
 .. _TinyMCE: http://www.tinymce.com/
 .. _YAHOO: http://developer.yahoo.com/yui/editor/
+.. _AlloyEditor: http://alloyeditor.com/
 .. _django-ckeditor: https://github.com/django-ckeditor/django-ckeditor
 .. _django-tinymce: https://github.com/aljosa/django-tinymce

@@ -1,0 +1,12 @@
+{% comment %}
+    We're deliberately injecting our editor into the global namespace so it
+    can be manipulated by user JavaScript.
+{% endcomment %}
+
+<script type="text/javascript">
+    (function(){
+	    var config = {{ config|default:"null" }};
+
+        django_wysiwyg.enable('{{ editor_name }}', '{{ field_id }}', config);
+    })();
+</script>
