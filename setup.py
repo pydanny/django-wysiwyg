@@ -6,7 +6,6 @@ import os
 import re
 import sys
 
-
 def read(*parts):
     file_path = path.join(path.dirname(__file__), *parts)
     return codecs.open(file_path, encoding='utf-8').read()
@@ -18,6 +17,8 @@ def find_variable(variable, *parts):
     if version_match:
         return str(version_match.group(1))
     raise RuntimeError("Unable to find version string.")
+
+version = find_variable('__version__', 'django_wysiwyg', '__init__.py')
 
 if sys.argv[-1] == 'publish':
     os.system('python setup.py sdist upload')
@@ -33,7 +34,7 @@ if sys.argv[-1] == 'tag':
 
 setup(
     name='django-wysiwyg',
-    version=find_variable('__version__', 'django_wysiwyg', '__init__.py'),
+    version=version,
     description="django-wysiwyg",
     long_description=read('README.rst'),
     classifiers=[
@@ -48,6 +49,7 @@ setup(
         "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3.3",
         "Programming Language :: Python :: 3.4",
+        "Programming Language :: Python :: 3.5",
         "Topic :: Internet :: WWW/HTTP :: Browsers",
         "Topic :: Internet :: WWW/HTTP :: Site Management",
         "Topic :: Office/Business :: Office Suites",
