@@ -37,7 +37,7 @@ setup(
     description="django-wysiwyg",
     long_description=read('README.rst'),
     classifiers=[
-        "Development Status :: 4 - Beta",
+        "Development Status :: 7 - Inactive",
         "Environment :: Web Environment",
         "Framework :: Django",
         "License :: OSI Approved :: MIT License",
