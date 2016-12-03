@@ -1,4 +1,7 @@
-Note: This project is currently unmaintained. If you would like to see development continue, you have two options:
+Unmaintained Project
+====================
+
+This project is currently unmaintained. If you would like to see development continue, you have two options:
 
 1. Hire the maintainers to work on this project.
 2. Volunteer to take over the project yourself.
